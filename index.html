@@ -17,14 +17,17 @@ body{background:#DCDCDC;font-family:'Poppins',system-ui,sans-serif;color:var(--t
 
 .deck{max-width:1120px;margin:0 auto;padding:28px 16px 90px}
 .slide{
-  background:var(--bg);width:100%;aspect-ratio:16/9;margin-bottom:26px;
-  padding:1.6% 1.8%;position:relative;overflow:hidden;
+  background:var(--bg);width:100%;aspect-ratio:16/9;min-height:min-content;margin-bottom:26px;
+  padding:1.6% 1.8% 1.9%;position:relative;overflow:visible;
+  display:flex;flex-direction:column;
   box-shadow:0 2px 18px rgba(0,0,0,.14);border-radius:6px;
-  container-type:inline-size;
 }
-.slide.dark{background:var(--black);display:flex;flex-direction:column;justify-content:center;padding-bottom:6%}
+.slide.dark{background:var(--black)}
+.dark>.row{margin-top:auto;margin-bottom:auto}
 /* todo escala con el ancho de la slide */
-.slide{font-size:clamp(9px,1.24cqw,18px)}
+/* la tipografía escala con el ancho real de la slide (tope: deck de 1120px) */
+.slide{font-size:clamp(8px,1.14vw,12.6px)}
+.slide>*{flex:none}
 
 /* ---- header ---- */
 .hdr{background:var(--black);border-radius:.55em;height:4.3em;display:flex;align-items:center;gap:.9em;padding:0 1em}
@@ -81,7 +84,8 @@ td b{font-weight:600;color:var(--t1)}
   border-radius:.35em;padding:.7em .9em;font-size:.8em;font-weight:300;color:var(--t4);line-height:1.45}
 .ins.rd{border-left-color:var(--red)}
 .ins b{font-weight:600;color:var(--t1)}
-.foot{position:absolute;left:1.8%;right:1.8%;bottom:1.8%}
+.foot{margin-top:auto;padding-top:.7em}
+.slide>.ins:last-child{margin-top:.2em}
 
 /* ---- badges ---- */
 .badge{display:inline-block;font-size:.62em;font-weight:600;letter-spacing:.04em;
@@ -136,7 +140,7 @@ td b{font-weight:600;color:var(--t1)}
   body{background:#fff}
   .deck{max-width:none;padding:0}
   .nav{display:none}
-  .slide{margin:0;page-break-after:always;border-radius:0;box-shadow:none;font-size:11px}
+  .slide{margin:0;page-break-after:always;border-radius:0;box-shadow:none}
   @page{size:landscape;margin:0}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
